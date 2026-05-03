@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biodata – Pravin Mishra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #fdf6e3;
+      --gold: #b8860b;
+      --gold-light: #d4a017;
+      --maroon: #7b1a1a;
+      --maroon-dark: #5a0f0f;
+      --text: #2c1a0e;
+      --text-muted: #6b4c2a;
+      --border: #c8a45a;
+      --section-bg: #7b1a1a;
+      --card-shadow: 0 8px 40px rgba(139,90,30,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8d9b5;
+      font-family: 'EB Garamond', Georgia, serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px 60px;
+    }
+
+    /* Background subtle pattern */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(184,134,11,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(123,26,26,0.08) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--cream);
+      max-width: 720px;
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Decorative corner flourishes */
+    .card::before, .card::after {
+      content: '';
+      position: absolute;
+      width: 70px; height: 70px;
+      border-color: var(--gold);
+      border-style: solid;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .card::before { top: 10px; left: 10px; border-width: 2px 0 0 2px; border-radius: 4px 0 0 0; }
+    .card::after  { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; border-radius: 0 0 4px 0; }
+
+    /* Header */
+    .header {
+      background: linear-gradient(160deg, var(--maroon-dark) 0%, var(--maroon) 100%);
+      padding: 36px 40px 28px;
+      text-align: center;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      margin-top: 24px;
+    }
+
+    .om-symbol {
+      font-size: 2.6rem;
+      color: var(--gold-light);
+      display: block;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .blessing {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      opacity: 0.9;
+    }
+    .main-name {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      line-height: 1.15;
+    }
+    .sub-title {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      color: var(--gold-light);
+      font-size: 1.05rem;
+      margin-top: 6px;
+      opacity: 0.85;
+    }
+
+    /* Body content */
+    .content {
+      padding: 0 36px 36px;
+    }
+
+    /* Section heading */
+    .section {
+      margin-top: 32px;
+    }
+    .section-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--section-bg);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--gold-light);
+      border-radius: 50%;
+    }
+
+    /* Info rows */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .info-row {
+      display: flex;
+      align-items: baseline;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(184,134,11,0.15);
+      transition: background 0.2s;
+    }
+    .info-row:hover {
+      background: rgba(184,134,11,0.06);
+    }
+    .info-row.full-width {
+      grid-column: 1 / -1;
+    }
+    .label {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.82rem;
+      color: var(--maroon);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+    .colon {
+      color: var(--gold);
+      margin: 0 8px;
+      font-size: 1rem;
+    }
+    .value {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.02rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .value a {
+      color: var(--maroon);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--gold);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .value a:hover {
+      color: var(--gold);
+      border-color: var(--maroon);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 28px 0 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(160deg, var(--maroon-dark) 0%, var(--maroon) 100%);
+      padding: 18px 36px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .footer p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    /* Responsive */
+    @media (max-width: 580px) {
+      .content { padding: 0 18px 28px; }
+      .header  { padding: 28px 18px 22px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .main-name { font-size: 1.6rem; }
+      .info-row.full-width { grid-column: auto; }
+      .footer { padding: 14px 18px; }
+    }
+
+    /* Badge chips */
+    .badge {
+      display: inline-block;
+      background: rgba(123,26,26,0.08);
+      border: 1px solid rgba(123,26,26,0.2);
+      color: var(--maroon);
+      font-size: 0.8rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+      <span class="om-symbol">ॐ</span>
+      <div class="blessing">ॐ श्री गणेशाय नमः</div>
+      <div class="main-name">Pravin Mishra</div>
+      <div class="sub-title">Biodata</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- PERSONAL DETAILS -->
+      <div class="section">
+        <div class="section-title">Personal Details</div>
+        <div class="info-grid">
+          <div class="info-row">
+            <span class="label">Name</span>
+            <span class="colon">:</span>
+            <span class="value">Pravin Mishra</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Date of Birth</span>
+            <span class="colon">:</span>
+            <span class="value">31 December 1997</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Place of Birth</span>
+            <span class="colon">:</span>
+            <span class="value">Kolkata</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Height</span>
+            <span class="colon">:</span>
+            <span class="value">5 feet 4 inches</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Gotra</span>
+            <span class="colon">:</span>
+            <span class="value"><span class="badge">Vats</span></span>
+          </div>
+          <div class="info-row">
+            <span class="label">Education</span>
+            <span class="colon">:</span>
+            <span class="value">Graduate</span>
+          </div>
+          <div class="info-row full-width">
+            <span class="label">Work</span>
+            <span class="colon">:</span>
+            <span class="value">Accounts Executive at Wingreens World&ensp;<span class="badge">Dec 2021 – Present</span></span>
+          </div>
+          <div class="info-row full-width">
+            <span class="label">Office Address</span>
+            <span class="colon">:</span>
+            <span class="value">Plot No. 24, Sector 35, Gurugram, Haryana – 122004</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- FAMILY DETAILS -->
+      <div class="section">
+        <div class="section-title">Family Details</div>
+        <div class="info-grid">
+          <div class="info-row">
+            <span class="label">Father's Name</span>
+            <span class="colon">:</span>
+            <span class="value">Late Shiv Kumar Mishra</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Father's Occupation</span>
+            <span class="colon">:</span>
+            <span class="value">Private Job</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Mother's Name</span>
+            <span class="colon">:</span>
+            <span class="value">Late Babu Dai Devi</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Mother's Occupation</span>
+            <span class="colon">:</span>
+            <span class="value">Housewife</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Grandfather's Name</span>
+            <span class="colon">:</span>
+            <span class="value">Late Abhinandan Mishra</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Grandfather's Occ.</span>
+            <span class="colon">:</span>
+            <span class="value">Farmer</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Grandmother's Name</span>
+            <span class="colon">:</span>
+            <span class="value">Late Sita Devi</span>
+          </div>
+          <div class="info-row">
+            <span class="label">&nbsp;</span>
+            <span class="colon" style="visibility:hidden">:</span>
+            <span class="value"></span>
+          </div>
+          <div class="info-row">
+            <span class="label">Elder Brother</span>
+            <span class="colon">:</span>
+            <span class="value">Navin Mishra&ensp;<span class="badge">Married</span></span>
+          </div>
+          <div class="info-row">
+            <span class="label">Elder Sisters</span>
+            <span class="colon">:</span>
+            <span class="value">2&ensp;<span class="badge">Married</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- CONTACT DETAILS -->
+      <div class="section">
+        <div class="section-title">Contact Details</div>
+        <div class="info-grid">
+          <div class="info-row">
+            <span class="label">Contact Person</span>
+            <span class="colon">:</span>
+            <span class="value">Mithlesh Jha</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Contact Number</span>
+            <span class="colon">:</span>
+            <span class="value">
+              <a href="tel:+919250269387">+91 92502 69387</a>
+            </span>
+          </div>
+          <div class="info-row full-width">
+            <span class="label">Residential Address</span>
+            <span class="colon">:</span>
+            <span class="value">V+ Post – Jagwan, Po. – Bisfi, Dist – Madhubani, Pin – 847004</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>ॐ श्री गणेशाय नमः &nbsp;·&nbsp; Pravin Mishra &nbsp;·&nbsp; Biodata</p>
+    </div>
+
+  </div><!-- /card -->
+</body>
+</html>
